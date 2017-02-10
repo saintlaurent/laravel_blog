@@ -14,3 +14,7 @@ Route::get('/tasks/{task}', function ($id) {
 });
 
 Route::get('/tasks', 'TasksController@index');
+
+Route::get('/register');
+
+Route::get('/login');
