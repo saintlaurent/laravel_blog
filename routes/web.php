@@ -15,6 +15,7 @@ Route::get('/tasks/{task}', function ($id) {
 
 Route::get('/tasks', 'TasksController@index');
 
-Route::get('/register');
+Route::get('/register', 'RegistrationsController@create');
+Route::post('register', 'RegistrationsController@store');
 
-Route::get('/login');
+Route::get('/login', 'SessionsController@create');
