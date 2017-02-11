@@ -66,7 +66,7 @@
 </head>
 <body>
 <div class="flex-center position-ref full-height">
-
+    @include('nav')
     <div class="content">
         @yield('content')
     </div>

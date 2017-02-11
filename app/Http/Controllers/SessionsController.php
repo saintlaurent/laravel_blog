@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +29,7 @@ class SessionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('sessions.create');
     }
 
     /**
@@ -34,7 +40,11 @@ class SessionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!auth()->attempt(request(['email', 'password']))){
+            return back()->withErrors(["Login Failed"]);
+        }
+
+        return Redirect::back();
     }
 
     /**
@@ -77,8 +87,9 @@ class SessionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        auth()->logout();
+        return redirect()->home();
     }
 }

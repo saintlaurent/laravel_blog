@@ -1,14 +1,12 @@
 @extends('layout')
 
 @section('content')
-    <h1>Register</h1>
+    <h1>Sign In</h1>
 
-    <form>
+    <form method="POST" action="/login">
         {{csrf_field()}}
 
-        <label for="name">Name: </label>
-        <input type="text" id="name" name="name">
-        <br>
+
         <label for="email">Email: </label>
         <input type="text" id="email" name="email">
         <br>
@@ -16,7 +14,7 @@
         <input type="password" id="password" name="password">
 
         <br>
-        <button type="submit">Register</button>
-
+        <button type="submit">Sign In</button>
+        @include('errors')
     </form>
 @endsection

@@ -9,9 +9,9 @@
         <input type="text" id="title" name="title">
 
         <label for="body">Content: </label>
-        <input type="text" id="body" name="body">
+        <textarea id="body" name="body"></textarea>
 
-        <input type="submit">
+        <button type="submit">Publish Post</button>
         {{csrf_field()}}
     </form>
 @endsection

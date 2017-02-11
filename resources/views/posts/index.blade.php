@@ -1,6 +1,6 @@
 @extends('layout')
-
-@include('nav')
 @section('content')
-    Layout files
+    @foreach($posts as $post)
+        @include('posts.article')
+    @endforeach
 @endsection

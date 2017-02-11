@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Comment;
+use Illuminate\Http\Request;
 
 class Post extends Model
 {
@@ -17,7 +18,15 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function addComment(){
+    public function addComment(Request $comment){
+        Comment::create([
+            'user_id' => auth()->user()->id,
+            'body' => $comment->body,
+            'post_id'=> $this->id,
+        ]);
+    }
+
+    public static function archives(){
 
     }
 }

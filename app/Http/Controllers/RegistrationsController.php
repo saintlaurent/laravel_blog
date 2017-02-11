@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class RegistrationsController extends Controller
 {
@@ -23,7 +24,7 @@ class RegistrationsController extends Controller
      */
     public function create()
     {
-        return view('sessions.create');
+        return view('registrations.create');
     }
 
     /**
@@ -39,7 +40,7 @@ class RegistrationsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|confirmed'
         ]);
 
         //Create and save user
@@ -53,6 +54,7 @@ class RegistrationsController extends Controller
         //Sign in user
         auth()->login($user);
         //Redirect to home page
+        return redirect()->home();
     }
 
     /**
